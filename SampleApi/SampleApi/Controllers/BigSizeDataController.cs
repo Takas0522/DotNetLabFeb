@@ -14,7 +14,7 @@ namespace SampleApi.Controllers
         [HttpGet]
         public IEnumerable<ReturnDataModel> GetBigSizeData()
         {
-            var retData = Enumerable.Range(1, 20000).Select(x => {
+            var retData = Enumerable.Range(1, 50000).Select(x => {
                 return new ReturnDataModel()
                 {
                     St1 = "1",
