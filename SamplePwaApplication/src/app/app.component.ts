@@ -1,5 +1,7 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, Output } from '@angular/core';
 import { Client, ReturnDataModel } from './http-client/client';
+import { UpdateService } from './services/update-service';
+import { getMatScrollStrategyAlreadyAttachedError } from '@angular/cdk/overlay/typings/scroll/scroll-strategy';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,8 @@ export class AppComponent {
 
   constructor(
     private client: Client,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private updateService: UpdateService
   ) {}
 
   getData() {
