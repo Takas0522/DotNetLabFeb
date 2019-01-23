@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Client, ReturnDataModel } from './http-client/client';
 
 @Component({
@@ -11,12 +11,15 @@ export class AppComponent {
   outputData: ReturnDataModel[];
 
   constructor(
-    private client: Client
+    private client: Client,
+    private cd: ChangeDetectorRef
   ) {}
 
   getData() {
     this.client.getBigSizeData().subscribe(data => {
-      this.outputData = data;
+      const sd = data.slice(0, 10);
+      this.outputData = sd;
+      this.cd.detectChanges();
     });
   }
 }
