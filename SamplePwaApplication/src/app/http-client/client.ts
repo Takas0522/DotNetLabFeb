@@ -45,11 +45,14 @@ export class Client {
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
+                    console.log(response_)
                     return this.processGetBigSizeData(<any>response_);
                 } catch (e) {
+                    console.log(e)
                     return <Observable<ReturnDataModel[]>><any>_observableThrow(e);
                 }
             } else
+            console.log(response_)
                 return <Observable<ReturnDataModel[]>><any>_observableThrow(response_);
         }));
     }
